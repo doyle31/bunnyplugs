@@ -1,0 +1,1 @@
+(function(t,r,a){"use strict";const f=r.findByStoreName("UserStore");let n=[];n.push(a.after("getCurrentUser",f,function(e,o){o?.hasOwnProperty("flags")&&(o.flags=801)}));const s=function(){for(const e of n)e()};return t.onUnload=s,t})({},vendetta.metro,vendetta.patcher);
