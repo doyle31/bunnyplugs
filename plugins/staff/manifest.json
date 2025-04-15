@@ -1,0 +1,11 @@
+{
+    "name": "staff",
+    "description": "make it think i has staff",
+    "authors": [
+        {
+            "name": "dotle31",
+            "id": "1197702222893547590"
+        }
+    ],
+    "main": "src/index.ts"
+}
