@@ -64,6 +64,48 @@ const tags: Tag[] = [
     }
 ]
 
+const archtags: Tag[] = [
+    {
+        text: "WEBHOOK",
+        condition: (guild, channel, user) => user.isNonUserBot()
+    },
+    {
+        text: "OWNER",
+        //backgroundColor: rawColors.ORANGE_345,
+        condition: (guild, channel, user) => guild?.ownerId === user.id
+    },
+    {
+        text: "SUDOER",
+        //backgroundColor: rawColors.RED_560,
+        condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("399814854413647884")
+    },
+    {
+        text: "MOD",
+        //backgroundColor: rawColors.GREEN_345,
+        condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("399818870568779776")
+    },
+    {
+        text: "TU",
+        //backgroundColor: rawColors.BLUE_345,
+        condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("406212176164945922")
+    },
+    {
+        text: "HU",
+        //backgroundColor: rawColors.BLUE_345,
+        condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("461957316921524254")
+    },
+    {
+        text: "VC Mod",
+        //backgroundColor: "#059669#",
+        permissions: ["MOVE_MEMBERS", "MUTE_MEMBERS", "DEAFEN_MEMBERS"]
+    },
+    {
+        text: "Chat Mod",
+        //backgroundColor: "#7C3AED",
+        permissions: ["MODERATE_MEMBERS"]
+    }
+]
+
 export default function getTag(guild, channel, user) {
     let permissions
     if (guild) {
@@ -78,21 +120,42 @@ export default function getTag(guild, channel, user) {
             .filter(Boolean)
     }
 
-    for (const tag of tags) {
-        if (tag.condition?.(guild, channel, user) ||
-            (!user.bot && tag.permissions?.some(perm => permissions?.includes(perm)))) {
+    if (guild.id == "399812551963049995") {
+        for (const tag of archtags) {
+            if (tag.condition?.(guild, channel, user) ||
+                (!user.bot && tag.permissions?.some(perm => permissions?.includes(perm)))) {
 
-            let roleColor = storage.useRoleColor ? GuildMemberStore.getMember(guild?.id, user.id)?.colorString : undefined
-            let backgroundColor = roleColor ? roleColor : tag.backgroundColor ?? rawColors.BRAND_500
-            let textColor = (roleColor || !tag.textColor) ? (chroma(backgroundColor).get('lab.l') < 70 ? rawColors.WHITE_500 : rawColors.BLACK_500) : tag.textColor
+                let roleColor = storage.useRoleColor ? GuildMemberStore.getMember(guild?.id, user.id)?.colorString : undefined
+                let backgroundColor = roleColor ? roleColor : tag.backgroundColor ?? rawColors.BRAND_500
+                let textColor = (roleColor || !tag.textColor) ? (chroma(backgroundColor).get('lab.l') < 70 ? rawColors.WHITE_500 : rawColors.BLACK_500) : tag.textColor
 
-            return {
-                ...tag,
-                textColor,
-                backgroundColor,
-                verified: typeof tag.verified === "function" ? tag.verified(guild, channel, user) : tag.verified ?? false,
-                condition: undefined,
-                permissions: undefined
+                return {
+                    ...tag,
+                    textColor,
+                    backgroundColor,
+                    verified: typeof tag.verified === "function" ? tag.verified(guild, channel, user) : tag.verified ?? false,
+                    condition: undefined,
+                    permissions: undefined
+                }
+            }
+        }
+    } else {
+        for (const tag of tags) {
+            if (tag.condition?.(guild, channel, user) ||
+                (!user.bot && tag.permissions?.some(perm => permissions?.includes(perm)))) {
+
+                let roleColor = storage.useRoleColor ? GuildMemberStore.getMember(guild?.id, user.id)?.colorString : undefined
+                let backgroundColor = roleColor ? roleColor : tag.backgroundColor ?? rawColors.BRAND_500
+                let textColor = (roleColor || !tag.textColor) ? (chroma(backgroundColor).get('lab.l') < 70 ? rawColors.WHITE_500 : rawColors.BLACK_500) : tag.textColor
+
+                return {
+                    ...tag,
+                    textColor,
+                    backgroundColor,
+                    verified: typeof tag.verified === "function" ? tag.verified(guild, channel, user) : tag.verified ?? false,
+                    condition: undefined,
+                    permissions: undefined
+                }
             }
         }
     }
