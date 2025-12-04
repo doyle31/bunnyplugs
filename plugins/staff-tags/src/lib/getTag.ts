@@ -125,7 +125,7 @@ export default function getTag(guild, channel, user) {
             .filter(Boolean)
     }
 
-    if (guild.id == "399812551963049995") {
+    if (guild?.id == "399812551963049995") {
         for (const tag of archtags) {
             if (tag.condition?.(guild, channel, user) ||
                 (!user.bot && tag.permissions?.some(perm => permissions?.includes(perm)))) {
