@@ -86,7 +86,6 @@ const archtags: Tag[] = [
     },
     {
         text: "SYSOP",
-        backgroundColor: "#ff0000",
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("1434955221502787775")
     },
     {
