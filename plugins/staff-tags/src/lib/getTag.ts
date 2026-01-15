@@ -85,6 +85,10 @@ const archtags: Tag[] = [
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("716842288831004718")
     },
     {
+        text: "SYSOP",
+        condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("1434955221502787775")
+    },
+    {
         text: "MOD",
         //backgroundColor: rawColors.GREEN_345,
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("399818870568779776")
