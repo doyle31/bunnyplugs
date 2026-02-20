@@ -99,19 +99,16 @@ const archtags: Tag[] = [
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("406212176164945922")
     },
     {
+        text: "Alumni",
+        condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("1434954347271422022")
+    },
+    {
         text: "HU",
-        //backgroundColor: rawColors.BLUE_345,
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("461957316921524254")
     },
     {
         text: "VC Mod",
-        //backgroundColor: "#059669#",
         permissions: ["MOVE_MEMBERS", "MUTE_MEMBERS", "DEAFEN_MEMBERS"]
-    },
-    {
-        text: "Chat Mod",
-        //backgroundColor: "#7C3AED",
-        permissions: ["MODERATE_MEMBERS"]
     }
 ]
 
