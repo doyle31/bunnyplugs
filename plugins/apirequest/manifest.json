@@ -1,0 +1,11 @@
+{
+    "name": "apirequest",
+    "description": "apirequest",
+    "authors": [
+        {
+            "name": "dotle31",
+            "id": "1197702222893547590"
+        }
+    ],
+    "main": "src/index.ts"
+}
