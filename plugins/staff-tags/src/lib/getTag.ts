@@ -34,32 +34,26 @@ const tags: Tag[] = [
     },
     {
         text: "OWNER",
-        //backgroundColor: rawColors.ORANGE_345,
         condition: (guild, channel, user) => guild?.ownerId === user.id
     },
     {
         text: "ADMIN",
-        //backgroundColor: rawColors.RED_560,
         permissions: ["ADMINISTRATOR"]
     },
     {
         text: "MOD",
-        //backgroundColor: rawColors.GREEN_345,
         permissions: ["MANAGE_GUILD", "MANAGE_CHANNELS", "MANAGE_ROLES", "MANAGE_WEBHOOKS"]
     },
     {
         text: "STAFF",
-        //backgroundColor: rawColors.BLUE_345,
         permissions: ["MANAGE_MESSAGES", "KICK_MEMBERS", "BAN_MEMBERS"]
     },
     {
         text: "VC Mod",
-        //backgroundColor: "#059669#",
         permissions: ["MOVE_MEMBERS", "MUTE_MEMBERS", "DEAFEN_MEMBERS"]
     },
     {
         text: "Chat Mod",
-        //backgroundColor: "#7C3AED",
         permissions: ["MODERATE_MEMBERS"]
     }
 ]
@@ -71,12 +65,10 @@ const archtags: Tag[] = [
     },
     {
         text: "OWNER",
-        //backgroundColor: rawColors.ORANGE_345,
         condition: (guild, channel, user) => guild?.ownerId === user.id
     },
     {
         text: "SUDOER",
-        //backgroundColor: rawColors.RED_560,
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("399814854413647884")
     },
     {
@@ -90,28 +82,23 @@ const archtags: Tag[] = [
     },
     {
         text: "MOD",
-        //backgroundColor: rawColors.GREEN_345,
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("399818870568779776")
     },
     {
         text: "TU",
-        //backgroundColor: rawColors.BLUE_345,
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("406212176164945922")
     },
     {
+        text: "VC Mod",
+        permissions: ["MOVE_MEMBERS", "MUTE_MEMBERS", "DEAFEN_MEMBERS"]
+    }.
+    {
         text: "HU",
-        //backgroundColor: rawColors.BLUE_345,
         condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("461957316921524254")
     },
     {
-        text: "VC Mod",
-        //backgroundColor: "#059669#",
-        permissions: ["MOVE_MEMBERS", "MUTE_MEMBERS", "DEAFEN_MEMBERS"]
-    },
-    {
-        text: "Chat Mod",
-        //backgroundColor: "#7C3AED",
-        permissions: ["MODERATE_MEMBERS"]
+        text: "Alumni",
+        condition: (guild, channel, user) => GuildMemberStore.getMember(guild?.id, user.id)?.roles?.includes("1434954347271422022")
     }
 ]
 
