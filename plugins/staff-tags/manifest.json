@@ -13,7 +13,11 @@
         {
             "name": "dotle31",
             "id": "1197702222893547590"
-        }       
+        },
+        {
+            "name": "SSH Addict",
+            "id": "437610218243883008"
+        }
     ],
     "main": "src/index.ts",
     "vendetta": {
